@@ -5,7 +5,7 @@ Get-ChildItem -Path $public -Filter *.ps1 | ForEach-Object {
     . $_.FullName
 }
 
-[global]$mytable = Import-Csv -Path "$env:OneDrive\Desktop\Users.csv" -Header SEID, EMail
+[global]$mytable = Import-Csv -Path "$psscriptRoot\Data\Users.csv" -Header SEID, EMail
 
 $Global:MyHashTable = @{}
 
