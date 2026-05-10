@@ -14,4 +14,4 @@ foreach ($r in $MyTable) {
     $MyHashTable[$r.EMail] = $($r.SEID).tolower()
 }
 
-
+Set-Alias -Name fun -Value format-usernames 

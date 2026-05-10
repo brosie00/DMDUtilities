@@ -44,6 +44,3 @@ function Format-UserNames {
         }
     }
 }
-# Usage:
-# Try typing `Format-UserNames -Key <Tab>` to cycle through keys interactively
-set-alias -Name Fun -Value Format-UserNames

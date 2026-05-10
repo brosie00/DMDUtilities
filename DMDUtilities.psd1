@@ -13,7 +13,9 @@
 
     CmdletsToExport   = @()
     VariablesToExport = @()
-    AliasesToExport   = @()
+    AliasesToExport   = @('fun')
 }
 
 
+# Usage:
+# Try typing `Format-UserNames -Key <Tab>` to cycle through keys interactively
