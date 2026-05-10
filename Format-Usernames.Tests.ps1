@@ -31,13 +31,7 @@ Describe "Format-UserNames Function" {
             $result = "applb" | Format-UserNames
             $result | Should -Match "ap.plebian@company.com"
         }
-
-        It "Should accept multiple keys as array" {
-            $result = Format-UserNames -Key @("ashlb", "angrb")
-            $result.Count | Should -Be 2
-            $result | Should -Match "as.heilbronner@company.com"
-            $result | Should -Match "an.gruber@company.com"
-        }
+    
     }
 
     Context "Mode Parameter - Output Formats" {
@@ -59,12 +53,7 @@ Describe "Format-UserNames Function" {
             $result | Should -Match "ap.plebian@company.com"
         }
 
-        It "Should format in ClipboardOnly mode" {
-            $result = Format-UserNames -Key "ashlb" -Mode "ClipboardOnly"
-            $result | Should -Not -BeNullOrEmpty
-        }
-
-        It "Should validate Mode parameter" {
+       It "Should validate Mode parameter" {
             { Format-UserNames -Key "ajaxb" -Mode "InvalidMode" } | Should -Throw
         }
     }

@@ -16,10 +16,14 @@ function Format-UserNames {
             ValueFromPipelineByPropertyName = $true
         )]
         [ArgumentCompleter({ HashtableKeyCompleter @args })]
-        [string[]]$Key,
+        [string[]]$Key
+        ,
+        
         [Parameter()]
-        [ValidateSet("Raw", "ClipboardOnly", "DatabaseUnlock", "YAML")]
-        [string]$Mode = "Raw",
+        [ValidateSet("Raw", "DatabaseUnlock", "YAML")]
+        [string]$Mode = "Raw"
+        ,
+        
         [Parameter()]
         [switch]$ToClipboard
     )
@@ -44,3 +48,4 @@ function Format-UserNames {
         }
     }
 }
+                    
