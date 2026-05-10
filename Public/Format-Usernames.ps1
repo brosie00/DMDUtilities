@@ -1,7 +1,7 @@
 
 <#
 .SYNOPSIS
-Formats and retrieves email addresses associated with usernames from the DMDUtilities database.
+Formats and retrieves email addresses associated with usernames drawn from the DMD LDAP directory and the globabl Discovery Directory.
 
 .DESCRIPTION
 Format-UserNames looks up one or more usernames in the global MyHashTable and returns their associated 
@@ -89,20 +89,29 @@ function Format-UserNames {
         [Parameter()]
         [switch]$ToClipboard
     )
+    begin {
+        # Ensure global hashtable exists
+        if (-not $global:MyHashTable -or $global:MyHashTable.Count -eq 0) {
+            Write-Verbose "MyHashTable is empty or not initialized."
+        }
+
+    }
     process {
         foreach ($k in $Key) {
             [string]$value = $Global:MyHashTable[$k]
+            
             switch ($Mode) {
                 "Raw" {
                     $output = " $value".ToLower()
                 }
                 "YAML" {
-                    $output = "-  $value".ToLower()
+                    $output = "- $value".ToLower()
                 }
                 "DatabaseUnlock" {
                     $output = "Please Unlock $k => $value".ToLower()
                 }
             }
+           
             Write-Output $output
             if ($ToClipboard) {
                 $output | clip
